@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import bcrypt from 'node_modules/bcryptjs'
+import bcrypt from 'bcryptjs'
 import { decodeToken, generateToken } from '~/lib/utils'
 import UserModel from '~/models/user.model'
 import { v4 as uuidV4 } from 'uuid'

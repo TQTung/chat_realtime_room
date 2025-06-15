@@ -9,7 +9,7 @@ import path from 'path'
 
 dotenv.config()
 const PORT = process.env.PORT || 6888
-const __dirname = path.resolve()
+const __currentDir = path.resolve()
 expressApp.use(express.json())
 expressApp.use(
   cors({
@@ -22,9 +22,9 @@ expressApp.use('/api/v1/auth', authRouters)
 expressApp.use('/api/v1', protectedRouters)
 
 if (process.env.NODE_ENV === 'production') {
-  expressApp.use(express.static(path.join(__dirname, '../frontend_chat', 'dist')))
+  expressApp.use(express.static(path.join(__currentDir, '../frontend_chat', 'dist')))
   expressApp.get('*', (_req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend_chat', 'dist', 'index.html'))
+    res.sendFile(path.join(__currentDir, '../frontend_chat', 'dist', 'index.html'))
   })
 }
 
